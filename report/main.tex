@@ -1,0 +1,187 @@
+\documentclass[a4paper]{report}
+
+% =========================================
+% PAGE SETUP
+% =========================================
+\usepackage[a4paper]{geometry}
+% =========================================
+% BASIC PACKAGES
+% =========================================
+\usepackage{graphicx}       % Images
+\usepackage{amsmath}        % Mathematics
+\usepackage{amssymb}        % Mathematical symbols
+\usepackage{booktabs}       % Professional tables
+\usepackage{float}          % [H] figure/table positioning
+\usepackage{caption}        % Caption customization
+\usepackage{hyperref}       % Hyperlinks and references
+\usepackage{ragged2e}       % Text alignment
+\usepackage{setspace}       % Line spacing
+\usepackage{hyperref}       % Clickable links and references
+\usepackage{pifont}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage[retainorgcmds]{IEEEtrantools}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+% =========================================
+% APA REFERENCING
+% =========================================
+
+\usepackage[
+    style=apa,
+    backend=biber
+]{biblatex}
+
+\addbibresource{references.bib}
+
+
+% =========================================
+% HYPERLINK SETTINGS
+% =========================================
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=black,
+    citecolor=black,
+    pdftitle={Critical Research Review Article}
+}
+
+% Table and figure caption formatting
+\DeclareCaptionFont{captionnine}{\fontsize{9pt}{11pt}\selectfont}
+
+\captionsetup[table]{
+    font=captionnine,
+    justification=raggedright,
+    singlelinecheck=false,
+    labelsep=colon
+}
+
+\captionsetup[figure]{
+    font=captionnine,
+    justification=centering,
+    singlelinecheck=false,
+    labelsep=colon
+}
+
+
+% =========================================
+% DOCUMENT
+% =========================================
+\begin{document}
+
+
+\begin{center}
+
+{\fontsize{18}{22}\selectfont\textbf{RESEARCH REPORT}}
+
+\vspace{1cm}
+
+{\fontsize{18}{22}\selectfont\textbf{2D PROJECTILES SIMULATION\\[6pt]}}
+
+\vspace{1cm}
+
+{\fontsize{12}{14}\selectfont\textbf{Authors}}
+
+\vspace{0.3cm}
+
+{\fontsize{12}{14}\selectfont
+Elsa Z. Fakhurrazi\\
+}
+
+\vspace{0.8cm}
+
+{\fontsize{12}{14}\selectfont
+\textbf{Project:} Documentation on the investigation of the fundametals laws of motion\\
+\vspace{0.8cm}
+\textbf{Project Version:} v1 \\
+\textbf{Supervisor:} Father\\
+\textbf{Start Date:} 7th October 2026\\
+\textbf{Date of Completion:} N/A
+
+}
+
+\end{center}
+
+% =========================================
+% ABSTRACT
+% =========================================
+
+\vspace{0.5cm}
+
+\noindent
+\textbf{Abstract}
+
+nothing yet 
+
+
+\vspace{0.2cm}
+
+\begin{justify}
+
+
+
+\vspace{0.3cm}
+
+\end{justify}
+
+
+
+% =========================================
+% TABLE OF CONTENTS
+% =========================================
+
+\newpage
+
+\tableofcontents
+
+% =========================================
+% MAIN CONTENT
+% =========================================
+
+
+% =========================================
+% 1. INTRODUCTION
+% =========================================
+\newpage
+
+\section{Introduction}
+
+The aim of this report is to document the process of my interpretation and derivation of the fundamnetal laws of motions. More specifically, 
+the projectile motions of a simple object. I intend to document each step of my simulation and formula derivation to 
+deepen my understanding of the mechanics of motions in the physical reality. 
+
+\section{Fundamental Formulas Of Motions}
+
+The following formulas is used to predict an object's acceleration, time, displacement and etc, by providing a combination of values from other variables. 
+
+\begin{equation}
+    v = u + at
+\end{equation}
+\begin{equation}
+    s = ut + \frac{1}{2}at^2 
+\end{equation}
+\begin{equation}
+    v^2 = u^2 + 2as
+\end{equation}
+\subsection{Derivation of the first formula}
+
+Acceleration is defined as the rate of change in velocity. In other words, how fast the speed of the object changes. To measure this,
+We take the difference between the final velocity with the initial velocity, divided by time, to see how much per second, does the speed change over time. 
+As such, the formula is as follows:
+
+\begin{equation}
+    a = \frac{v - u}{t}
+\end{equation}
+
+The derivation of the first formula is simply a rearrangement of the acceleration formula, creating velocity as the subject.
+
+\begin{IEEEeqnarray}{rCl}
+    a  & = & \frac{v - u}{t} \\
+    at & = & v - u \\
+    v  & = & u + at
+\end{IEEEeqnarray}
+
+
+
+\end{document}
+
