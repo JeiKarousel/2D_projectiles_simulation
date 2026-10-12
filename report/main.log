@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.9.5)  7 OCT 2026 02:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.9.5)  12 OCT 2026 15:31
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -717,7 +717,6 @@ File: color.cfg 2016/01/02 v1.6 sample color configuration
 Package color Info: Driver file: pdftex.def on input line 149.
  (c:/texlive/2026/texmf-dist/tex/latex/graphics/mathcolor.ltx))
 Package hyperref Info: Link coloring ON on input line 70.
- (./main.out) (./main.out)
 \@outlinefile=\write4
 \openout4 = `main.out'.
 
@@ -764,21 +763,267 @@ LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <18> not available
 
 [1
 
-{c:/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./main.toc
-LaTeX Font Info:    Trying to load font information for U+msa on input line 1.
- (c:/texlive/2026/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Trying to load font information for U+msb on input line 1.
- (c:/texlive/2026/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-))
+{c:/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+No file main.toc.
 \tf@toc=\write5
 \openout5 = `main.toc'.
 
- [2
+[2
 
 ]
+LaTeX Font Info:    Trying to load font information for U+msa on input line 157.
+ (c:/texlive/2026/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 157.
+ (c:/texlive/2026/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+c:/Users/themo/2D_projectiles_simulation/report/main.tex:196: Missing $ inserted.
+<inserted text> 
+                $
+l.196 
+      
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+c:/Users/themo/2D_projectiles_simulation/report/main.tex:197: Missing $ inserted.
+<inserted text> 
+                $
+l.197     s &
+              = & \frac{u + v}{2}(t) \nonumber \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+c:/Users/themo/2D_projectiles_simulation/report/main.tex:198: Missing $ inserted.
+<inserted text> 
+                $
+l.198 
+      
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+c:/Users/themo/2D_projectiles_simulation/report/main.tex:199: Missing $ inserted.
+<inserted text> 
+                $
+l.199     s &
+              = & \frac{u + (u + at)}{2}(t) \nonumber \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+c:/Users/themo/2D_projectiles_simulation/report/main.tex:200: Missing $ inserted.
+<inserted text> 
+                $
+l.200 
+      
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+c:/Users/themo/2D_projectiles_simulation/report/main.tex:201: Missing $ inserted.
+<inserted text> 
+                $
+l.201     s &
+              = & \frac{2u + at}{2}(t) \nonumber \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+c:/Users/themo/2D_projectiles_simulation/report/main.tex:202: Missing $ inserted.
+<inserted text> 
+                $
+l.202 
+      
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+c:/Users/themo/2D_projectiles_simulation/report/main.tex:203: Missing $ inserted.
+<inserted text> 
+                $
+l.203     s &
+              = & (\frac{2u}{2} + \frac{at}{2})(t) \nonumber \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+c:/Users/themo/2D_projectiles_simulation/report/main.tex:204: Missing $ inserted.
+<inserted text> 
+                $
+l.204 
+      
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+c:/Users/themo/2D_projectiles_simulation/report/main.tex:205: Missing $ inserted.
+<inserted text> 
+                $
+l.205     s &
+              = & (ut + \frac{1}{2})(at^2) \nonumber \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+c:/Users/themo/2D_projectiles_simulation/report/main.tex:206: Missing $ inserted.
+<inserted text> 
+                $
+l.206 
+      
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+c:/Users/themo/2D_projectiles_simulation/report/main.tex:207: Missing $ inserted.
+<inserted text> 
+                $
+l.207 \end{IEEEeqnarray}
+                        
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+[3]
+c:/Users/themo/2D_projectiles_simulation/report/main.tex:214: Missing $ inserted.
+<inserted text> 
+                $
+l.214 
+      
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+c:/Users/themo/2D_projectiles_simulation/report/main.tex:215: Missing $ inserted.
+<inserted text> 
+                $
+l.215     t &
+              = & \frac{v - u}{a} \nonumber \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+c:/Users/themo/2D_projectiles_simulation/report/main.tex:216: Missing $ inserted.
+<inserted text> 
+                $
+l.216 
+      
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+c:/Users/themo/2D_projectiles_simulation/report/main.tex:217: Missing $ inserted.
+<inserted text> 
+                $
+l.217     s &
+              = & \frac{v + u}{2}\left(\frac{v - u}{a}\right) \nonumber \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+c:/Users/themo/2D_projectiles_simulation/report/main.tex:218: Missing $ inserted.
+<inserted text> 
+                $
+l.218 
+      
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+c:/Users/themo/2D_projectiles_simulation/report/main.tex:219: Missing $ inserted.
+<inserted text> 
+                $
+l.219     s &
+              = & \frac{v^2 - vu + vu - u^2}{2a} \nonumber\\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+c:/Users/themo/2D_projectiles_simulation/report/main.tex:220: Missing $ inserted.
+<inserted text> 
+                $
+l.220 
+      
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+c:/Users/themo/2D_projectiles_simulation/report/main.tex:221: Missing $ inserted.
+<inserted text> 
+                $
+l.221     s &
+              = & \frac{v^2 - u^2}{2a} \nonumber \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+c:/Users/themo/2D_projectiles_simulation/report/main.tex:222: Missing $ inserted.
+<inserted text> 
+                $
+l.222 
+      
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+c:/Users/themo/2D_projectiles_simulation/report/main.tex:223: Missing $ inserted.
+<inserted text> 
+                $
+l.223     2as &
+                = & v^2 + u^2 \nonumber \\
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+c:/Users/themo/2D_projectiles_simulation/report/main.tex:224: Missing $ inserted.
+<inserted text> 
+                $
+l.224 
+      
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+c:/Users/themo/2D_projectiles_simulation/report/main.tex:225: Missing $ inserted.
+<inserted text> 
+                $
+l.225     v^
+            2 & = & u^2 + 2as
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+c:/Users/themo/2D_projectiles_simulation/report/main.tex:226: Missing $ inserted.
+<inserted text> 
+                $
+l.226 
+      
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+c:/Users/themo/2D_projectiles_simulation/report/main.tex:227: Missing $ inserted.
+<inserted text> 
+                $
+l.227 \end{IEEEeqnarray}
+                        
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
 
 Package caption Warning: Unused \captionsetup[table] on input line 57.
 See the caption package documentation for explanation.
@@ -787,7 +1032,7 @@ See the caption package documentation for explanation.
 Package caption Warning: Unused \captionsetup[figure] on input line 64.
 See the caption package documentation for explanation.
 
-[3] (./main.aux)
+[4] (./main.aux)
  ***********
 LaTeX2e <2026-06-01>
 L3 programming layer <2026-08-10>
@@ -797,25 +1042,39 @@ L3 programming layer <2026-08-10>
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.72pt have occurred.
 
-Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 714DAA8B1AB6184A5FC7C9E03578A7F0;542.
+
+LaTeX Warning: There were undefined references.
+
+
+Package rerunfilecheck Warning: File `main.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `main.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  AB192D75A674BFFF4C26303644226FA3;1003.
+
+Package biblatex Warning: Please (re)run Biber on the file:
+(biblatex)                main
+(biblatex)                and rerun LaTeX afterwards.
+
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 20833 strings out of 467099
- 365316 string characters out of 5412503
- 1316400 words of memory out of 5000000
- 49921 multiletter control sequences out of 15000+600000
+ 20829 strings out of 467099
+ 365275 string characters out of 5412503
+ 1320292 words of memory out of 5000000
+ 49915 multiletter control sequences out of 15000+600000
  632840 words of font info for 59 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  74i,6n,79p,1229b,5052s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on main.pdf (3 pages, 89283 bytes).
+<c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on main.pdf (4 pages, 98853 bytes).
 PDF statistics:
- 83 PDF objects out of 1000 (max. 8388607)
- 63 compressed objects within 1 object stream
- 15 named destinations out of 1000 (max. 500000)
- 25 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 87 PDF objects out of 1000 (max. 8388607)
+ 64 compressed objects within 1 object stream
+ 23 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
