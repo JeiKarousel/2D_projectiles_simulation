@@ -1,6 +1,7 @@
 #include "raylib.h"
 #include "button.hpp"
 #include <iostream> 
+#include <string>
 
 //functions
 int ExampleQuadFunc(int x){
@@ -10,9 +11,6 @@ int ExampleQuadFunc(int x){
 }
 
 int main(){
-
-    Vector2 mouse_pos = GetMousePosition();
-    bool mouse_pressed = IsMouseButtonPressed(MOUSE_BUTTON_LEFT);
 
     std::cout<< "Starting the 2D projectiles simulation" << std::endl; 
 
@@ -37,10 +35,13 @@ int main(){
 
     InitWindow(screen_width, screen_height, "2D_Projectiles_Simulation");
     // SetTargetFPS(60);
-    SetTargetFPS(200);
+    SetTargetFPS(50);
     int frames = 0;
 
     while(!WindowShouldClose()){
+
+        Vector2 mouse_pos = GetMousePosition();
+        bool mouse_pressed = IsMouseButtonPressed(MOUSE_BUTTON_LEFT);
 
         frames++;
         BeginDrawing();
@@ -54,7 +55,7 @@ int main(){
         DrawLine(screen_width/2, 0, screen_width/2, screen_height, BLACK);
         DrawLine(0, screen_height/2, screen_width, screen_height/2, BLACK);
 
-        DrawRectangle(0, (screen_height - screen_height*1/4), 1200, screen_height*1/4, GRAY);
+        DrawRectangle(0, (screen_height - screen_height*1/4), screen_width, screen_height*1/4, GRAY);
 
         DrawText(TextFormat(
             "Height from ground: %d m\n"
@@ -70,19 +71,29 @@ int main(){
             "Displacement: %d m\n"
             "Total time: %.2f s\n",
             gravity_acceleration, displacement, total_time),
-            850, 30, 20, BLACK
+            825, 30, 20, BLACK
         );
 
-    // //Projectiles -- constants
-    // const double gravity_acceleration = 9.80665; //(m/^2)
-    // const int displacement = (screen_width-100);
+        //buttons 
+        Button play_btn(1000, (screen_height - screen_height*1/4+20), 170, 80, GREEN, WHITE, GREEN, "PLAY", WHITE, 35);
+        play_btn.Draw(mouse_pos, mouse_pressed);
 
-    // //Projectiles -- initial variables//
-    // float angle = 30; // in degrees 
-    // float height = screen_height/2;  
-    // float speed_u = 10; // m/s 
-    // float speed_v = 20;
-    // float total_time = 5; // in seconds
+        //Adding and subtracting 
+        DrawText(TextFormat(
+            "Height\n\n"
+            "Angle\n\n"
+            "Initial Speed"),
+            20, (screen_height - screen_height*1/4+20), 20, BLACK
+        );
+
+        Button height_add_btn(90, (screen_height - screen_height*1/4+20), 25, 25, WHITE, GRAY, WHITE, "+", BLACK, 35);
+        height_add_btn.Draw(mouse_pos,mouse_pressed);
+
+        Button angle_add_btn(90, (screen_height - screen_height*1/4+65), 25, 25, WHITE, GRAY, WHITE, "+", BLACK, 35);
+        angle_add_btn.Draw(mouse_pos,mouse_pressed);
+
+        Button initial_speed_add_btn(159, (screen_height - screen_height*1/4+108), 25, 25, WHITE, GRAY, WHITE, "+", BLACK, 35);
+        initial_speed_add_btn.Draw(mouse_pos,mouse_pressed);
 
         EndDrawing();
     }
