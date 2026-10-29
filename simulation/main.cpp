@@ -54,10 +54,13 @@ int main(){
     float particle_x;
     float particle_y;
 
+    float newXPos;
+    float newYPos;
+
     InitWindow(screen_width, screen_height, "2D_Projectiles_Simulation");
     SetTargetFPS(60);
     bool play = false;
-    bool has_landed = false;
+    bool landed = false;
 
     float elapsed_time = 0;
 
@@ -69,17 +72,21 @@ int main(){
         BeginDrawing();
         ClearBackground(WHITE);
 
-        if(play == true){
+        if(play && !landed){
 
             float current_time = GetFrameTime();
             elapsed_time+= current_time;
-
-            float newXPos = CalculateXPos(CalculteXInitialVelocity(angle, initial_velocity), elapsed_time);
-            float newYPos = CalculateYPos(CalculteYInitialVelocity(angle, initial_velocity), elapsed_time, gravity_acceleration);
+            newXPos = CalculateXPos(CalculteXInitialVelocity(angle, initial_velocity), elapsed_time);
+            newYPos = CalculateYPos(CalculteYInitialVelocity(angle, initial_velocity), elapsed_time, gravity_acceleration);
 
             //calculate displacement for x,y -- convert to px to draw
             particle_x = initial_xPos+MetreToPixel(newXPos);
             particle_y = initial_yPos-MetreToPixel(newYPos);
+
+            if((particle_y+10) >= initial_yPos){
+                particle_y = initial_yPos - 10;
+                landed = true;
+            }
         }
         else{
             elapsed_time = 0;
