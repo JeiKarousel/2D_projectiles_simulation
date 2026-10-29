@@ -44,7 +44,7 @@ int main(){
     const double gravity_acceleration = 9.80665; //(m/^2)
 
     //Projectiles -- initial variables//
-    float angle = 70; // in degrees 
+    float angle = 30; // in degrees 
     float initial_velocity = 30; // m/s 
 
     //Particle center coordinates (starting)
@@ -56,6 +56,8 @@ int main(){
 
     InitWindow(screen_width, screen_height, "2D_Projectiles_Simulation");
     SetTargetFPS(60);
+    bool play = false;
+    bool has_landed = false;
 
     float elapsed_time = 0;
 
@@ -64,20 +66,28 @@ int main(){
         Vector2 mouse_pos = GetMousePosition();
         bool mouse_pressed = IsMouseButtonPressed(MOUSE_BUTTON_LEFT);
 
-        float current_time = GetFrameTime();
-        elapsed_time+= current_time;
-
         BeginDrawing();
         ClearBackground(WHITE);
 
-        float newXPos = CalculateXPos(CalculteXInitialVelocity(angle, initial_velocity), elapsed_time);
-        float newYPos = CalculateYPos(CalculteYInitialVelocity(angle, initial_velocity), elapsed_time, gravity_acceleration);
+        if(play == true){
 
-        //calculate displacement for x,y -- convert to px to draw
-        particle_x = initial_xPos+MetreToPixel(newXPos);
-        particle_y = initial_yPos-MetreToPixel(newYPos);
+            float current_time = GetFrameTime();
+            elapsed_time+= current_time;
 
-        DrawCircle(particle_x, particle_y, 10,BLACK);
+            float newXPos = CalculateXPos(CalculteXInitialVelocity(angle, initial_velocity), elapsed_time);
+            float newYPos = CalculateYPos(CalculteYInitialVelocity(angle, initial_velocity), elapsed_time, gravity_acceleration);
+
+            //calculate displacement for x,y -- convert to px to draw
+            particle_x = initial_xPos+MetreToPixel(newXPos);
+            particle_y = initial_yPos-MetreToPixel(newYPos);
+        }
+        else{
+            elapsed_time = 0;
+            particle_x = initial_xPos;
+            particle_y = initial_yPos;
+        }
+
+        DrawCircle(particle_x, particle_y, 10, BLACK);
 
         DrawLine(screen_width/2, 0, screen_width/2, screen_height, BLACK);
         // DrawLine(0, screen_height/2, screen_width, screen_height/2, BLACK);
@@ -91,7 +101,9 @@ int main(){
 
         DrawText(TextFormat(
             "Angle of Trajectory: %.2f degrees\n"
-            "Initial Speed: %.2f m/s\n",
+            "Initial Speed: %.2f m/s\n" 
+            "(Angle)Recommended Min: 15, Max: 85\n"
+            "(Speed)Recommended Min: 30, Max: 90",
             angle, initial_velocity), 
             20, 20, 20, BLACK
         );
@@ -104,8 +116,24 @@ int main(){
         );
 
         //buttons 
-        Button play_btn(1000, (screen_height - screen_height*1/4+20), 170, 80, GREEN, WHITE, GREEN, "PLAY", WHITE, 35);
-        play_btn.Draw(mouse_pos, mouse_pressed);
+        Button play_btn(1000, (screen_height - screen_height*1/4+20), 170, 80, GREEN, LIME, GREEN, "PLAY", WHITE, 35,
+        [&](){
+            elapsed_time = 0;
+            play = true; 
+        });
+
+        Button stop_btn(1000, (screen_height - screen_height*1/4+20), 170, 80, RED, PINK, RED, "STOP", WHITE, 35,
+        [&play](){
+            play = false; 
+        });
+
+        if(play == false){
+           play_btn.Draw(mouse_pos, mouse_pressed);
+        }
+        else{
+           stop_btn.Draw(mouse_pos, mouse_pressed);
+        }
+    
 
         //Adding and subtracting 
         DrawText(TextFormat(
@@ -115,17 +143,29 @@ int main(){
             20, (screen_height - screen_height*1/4+20), 20, BLACK
         );
 
-        Button angle_add_btn(90, (screen_height - screen_height*1/4+20), 25, 25, WHITE, GRAY, WHITE, "+", BLACK, 35);
+        Button angle_add_btn(90, (screen_height - screen_height*1/4+20), 25, 25, WHITE, GRAY, WHITE, "+", BLACK, 35, 
+        [&angle](){
+            angle+=5;
+        });
         angle_add_btn.Draw(mouse_pos,mouse_pressed);
         
-        Button angle_subtract_btn(130, (screen_height - screen_height*1/4+20), 25, 25, WHITE, GRAY, WHITE, "-", BLACK, 35);
+        Button angle_subtract_btn(130, (screen_height - screen_height*1/4+20), 25, 25, WHITE, GRAY, WHITE, "-", BLACK, 35, 
+        [&angle](){
+            angle-=5;
+        });
         angle_subtract_btn.Draw(mouse_pos,mouse_pressed);
 
-        Button initial_speed_add_btn(159, (screen_height - screen_height*1/4+63), 25, 25, WHITE, GRAY, WHITE, "+", BLACK, 35);
-        initial_speed_add_btn.Draw(mouse_pos,mouse_pressed);
+        Button initial_velocity_add_btn(159, (screen_height - screen_height*1/4+63), 25, 25, WHITE, GRAY, WHITE, "+", BLACK, 35, 
+        [&initial_velocity](){
+            initial_velocity+=5;
+        });
+        initial_velocity_add_btn.Draw(mouse_pos,mouse_pressed);
 
-        Button initial_speed_subtract_btn(199, (screen_height - screen_height*1/4+63), 25, 25, WHITE, GRAY, WHITE, "-", BLACK, 35);
-        initial_speed_subtract_btn.Draw(mouse_pos,mouse_pressed);
+        Button initial_velocity_subtract_btn(199, (screen_height - screen_height*1/4+63), 25, 25, WHITE, GRAY, WHITE, "-", BLACK, 35,
+        [&initial_velocity](){
+            initial_velocity-=5;
+        });
+        initial_velocity_subtract_btn.Draw(mouse_pos,mouse_pressed);
 
         EndDrawing();
     }

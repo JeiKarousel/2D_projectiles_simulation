@@ -13,25 +13,14 @@ public:
     std::string txt;
     int font_size;
     Rectangle rect;
-
+    std::function<void()> ExecuteFunction;
     // constructor
-    // Button(int x_pos, int y_pos, int width, int height, Color default_color, Color hover_color, Color pressed_color, std::string txt, Color text_color, int font_size)
-    // {
-    //     this->x_pos = x_pos;
-    //     this->y_pos = y_pos;
-    //     this->height = height;
-    //     this->width = width;
-    //     this->default_color = default_color;
-    //     this->hover_color = hover_color;
-    //     this->pressed_color = pressed_color;
-    //     this->txt = txt;
-    //     this->text_color = text_color;
-    //     this->font_size = font_size;
-    // }
-    Button(int x_pos, int y_pos, int width, int height, Color default_color, Color hover_color, Color pressed_color, std::string txt, Color text_color, int font_size) :
+   
+    Button(int x_pos, int y_pos, int width, int height, Color default_color, Color hover_color, Color pressed_color, std::string txt, Color text_color, int font_size, std::function<void()> func) :
     x_pos(x_pos), y_pos(y_pos), width(width), height(height), default_color(default_color), hover_color(hover_color), pressed_color(pressed_color), txt(txt), text_color(text_color), font_size(font_size),
     rect{(int)x_pos, (int)y_pos, (int)width, (int)height}
     {
+        ExecuteFunction = func;
     }
     // destructor
     ~Button()
@@ -44,6 +33,7 @@ public:
         // pressed, hover then default
         if(is_pressed(mouse_pos, mouse_pressed, rect)){
             DrawRectangleRec(rect, pressed_color);
+            ExecuteFunction();
         }
         else if(is_hovered(mouse_pos, rect)){
             DrawRectangleRec(rect, hover_color);
@@ -68,8 +58,6 @@ public:
         }
         return false; 
     }
-
-    void ButtonFunction();
 };
 
 // subclass
