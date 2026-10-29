@@ -2,12 +2,34 @@
 #include "button.hpp"
 #include <iostream> 
 #include <string>
+#include <math.h> 
+#include <functional> 
 
-//functions
-int ExampleQuadFunc(int x){
-    // int y = x*x;
-    int y = x++;
-    return y;
+// //functions
+// PROJECTILE X AND Y COORDINATE CALCULATIONS 
+
+float CalculteXInitialVelocity(int angle, float velocity){
+    // initial speed (x component)
+    return velocity*cos(PI/180*angle);
+}
+
+float CalculteYInitialVelocity(int angle, float velocity){
+    // initial speed (y component)
+    return velocity*sin(PI/180*angle);
+}
+
+float CalculateXPos(float velocity, float seconds){
+    return seconds*velocity;
+    //formula of s = ut + (1/2)at^2
+}
+
+float CalculateYPos(float velocity, float seconds, double gravity){
+    return seconds*velocity - (0.5)*gravity*(seconds*seconds);
+    //formula of s = ut + (1/2)at^2
+}
+
+float MetreToPixel(float metre){
+    return metre*10;
 }
 
 int main(){
@@ -20,57 +42,64 @@ int main(){
 
     //Projectiles -- constants
     const double gravity_acceleration = 9.80665; //(m/^2)
-    const int displacement = (screen_width-100);
 
     //Projectiles -- initial variables//
-    float angle = 30; // in degrees 
-    float height = screen_height/2;  
-    float speed_u = 10; // m/s 
-    float speed_v = 20;
-    float total_time = 5; // in seconds 
+    float angle = 70; // in degrees 
+    float initial_velocity = 30; // m/s 
 
-    //Particle center coordinates
-    int particle_x = 15;
-    int particle_y = height;
+    //Particle center coordinates (starting)
+    float initial_xPos = 35;
+    float initial_yPos = screen_height/2+150;
+
+    float particle_x;
+    float particle_y;
 
     InitWindow(screen_width, screen_height, "2D_Projectiles_Simulation");
-    // SetTargetFPS(60);
-    SetTargetFPS(50);
-    int frames = 0;
+    SetTargetFPS(60);
+
+    float elapsed_time = 0;
 
     while(!WindowShouldClose()){
 
         Vector2 mouse_pos = GetMousePosition();
         bool mouse_pressed = IsMouseButtonPressed(MOUSE_BUTTON_LEFT);
 
-        frames++;
+        float current_time = GetFrameTime();
+        elapsed_time+= current_time;
+
         BeginDrawing();
         ClearBackground(WHITE);
 
-        //changes to x and y of the particle
-        particle_x++;
-        particle_y = ExampleQuadFunc(particle_x);
+        float newXPos = CalculateXPos(CalculteXInitialVelocity(angle, initial_velocity), elapsed_time);
+        float newYPos = CalculateYPos(CalculteYInitialVelocity(angle, initial_velocity), elapsed_time, gravity_acceleration);
+
+        //calculate displacement for x,y -- convert to px to draw
+        particle_x = initial_xPos+MetreToPixel(newXPos);
+        particle_y = initial_yPos-MetreToPixel(newYPos);
 
         DrawCircle(particle_x, particle_y, 10,BLACK);
+
         DrawLine(screen_width/2, 0, screen_width/2, screen_height, BLACK);
-        DrawLine(0, screen_height/2, screen_width, screen_height/2, BLACK);
+        // DrawLine(0, screen_height/2, screen_width, screen_height/2, BLACK);
+        DrawLine(0, screen_height/2+150, screen_width, screen_height/2+150, BLACK); //55
+
+        for(int i=0; i<screen_width; i+=10){
+            DrawLine(i, screen_height/2+150-10, i, screen_height/2+150+10, BLACK);
+        }
 
         DrawRectangle(0, (screen_height - screen_height*1/4), screen_width, screen_height*1/4, GRAY);
 
         DrawText(TextFormat(
-            "Height from ground: %d m\n"
             "Angle of Trajectory: %.2f degrees\n"
-            "Initial Speed: %.2f m/s\n"
-            "Final Speed: %.2f m/s\n",
-            height, angle, speed_u, speed_v), 
+            "Initial Speed: %.2f m/s\n",
+            angle, initial_velocity), 
             20, 20, 20, BLACK
         );
 
         DrawText(TextFormat(
             "Gravity Acceleration: %.5f m/s^2\n"
-            "Displacement: %d m\n"
-            "Total time: %.2f s\n",
-            gravity_acceleration, displacement, total_time),
+            "Elapsed Time %.2f s\n",
+            gravity_acceleration, elapsed_time),
             825, 30, 20, BLACK
         );
 
@@ -80,20 +109,23 @@ int main(){
 
         //Adding and subtracting 
         DrawText(TextFormat(
-            "Height\n\n"
+            // "Height\n\n"
             "Angle\n\n"
             "Initial Speed"),
             20, (screen_height - screen_height*1/4+20), 20, BLACK
         );
 
-        Button height_add_btn(90, (screen_height - screen_height*1/4+20), 25, 25, WHITE, GRAY, WHITE, "+", BLACK, 35);
-        height_add_btn.Draw(mouse_pos,mouse_pressed);
-
-        Button angle_add_btn(90, (screen_height - screen_height*1/4+65), 25, 25, WHITE, GRAY, WHITE, "+", BLACK, 35);
+        Button angle_add_btn(90, (screen_height - screen_height*1/4+20), 25, 25, WHITE, GRAY, WHITE, "+", BLACK, 35);
         angle_add_btn.Draw(mouse_pos,mouse_pressed);
+        
+        Button angle_subtract_btn(130, (screen_height - screen_height*1/4+20), 25, 25, WHITE, GRAY, WHITE, "-", BLACK, 35);
+        angle_subtract_btn.Draw(mouse_pos,mouse_pressed);
 
-        Button initial_speed_add_btn(159, (screen_height - screen_height*1/4+108), 25, 25, WHITE, GRAY, WHITE, "+", BLACK, 35);
+        Button initial_speed_add_btn(159, (screen_height - screen_height*1/4+63), 25, 25, WHITE, GRAY, WHITE, "+", BLACK, 35);
         initial_speed_add_btn.Draw(mouse_pos,mouse_pressed);
+
+        Button initial_speed_subtract_btn(199, (screen_height - screen_height*1/4+63), 25, 25, WHITE, GRAY, WHITE, "-", BLACK, 35);
+        initial_speed_subtract_btn.Draw(mouse_pos,mouse_pressed);
 
         EndDrawing();
     }

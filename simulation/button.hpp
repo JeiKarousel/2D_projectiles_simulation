@@ -1,6 +1,7 @@
 #pragma once
 #include "raylib.h"
 #include <string>
+#include <functional>
 
 // main class
 class Button
@@ -67,6 +68,8 @@ public:
         }
         return false; 
     }
+
+    void ButtonFunction();
 };
 
 // subclass
