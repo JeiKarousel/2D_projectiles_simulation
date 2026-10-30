@@ -83,7 +83,7 @@ int main()
         if (start == false)
         {
             DrawTexture(mainScreen, 0,0, WHITE);
-            Button start_btn(1000, (screen_height - screen_height * 1 / 4 + 20), 170, 80, RED, PINK, RED, "START", WHITE, 35,
+            Button start_btn((screen_width/2)-60, (screen_height/2)+35, 170, 80, RED, PINK, RED, "START", WHITE, 35,
                              [&start]()
                              {
                                  start = true;
@@ -93,41 +93,6 @@ int main()
         else
         {
             UnloadTexture(mainScreen);
-
-            if (play && !landed)
-            {
-                float current_time = GetFrameTime();
-                elapsed_time += current_time;
-                newXPos = CalculateXPos(CalculteXInitialVelocity(angle, initial_velocity), elapsed_time);
-                newYPos = CalculateYPos(CalculteYInitialVelocity(angle, initial_velocity), elapsed_time, gravity_acceleration);
-
-                // calculate displacement for x,y -- convert to px to draw
-                particle_x = initial_xPos + MetreToPixel(newXPos);
-                particle_y = initial_yPos - MetreToPixel(newYPos);
-
-                if ((particle_y + 10) >= initial_yPos)
-                {
-                    particle_y = initial_yPos - 10;
-                    landed = true;
-                }
-            }
-            else if (!play)
-            {
-                landed = false;
-                elapsed_time = 0;
-                particle_x = initial_xPos;
-                particle_y = initial_yPos;
-            }
-            else
-            {
-                DrawRectangle(300,300,600,300,WHITE);
-                DrawText(TextFormat(
-                         "Total Time Taken: %.2ftotal time\n\n"
-                         "Total Displacement: %.2fdisplacement"),
-                     20, (screen_height - screen_height * 1 / 4 + 20), 20, BLACK);
-            }
-
-            DrawCircle(particle_x, particle_y, 10, BLACK);
 
             DrawLine(screen_width / 2, 0, screen_width / 2, screen_height, BLACK);
             // DrawLine(0, screen_height/2, screen_width, screen_height/2, BLACK);
@@ -212,6 +177,56 @@ int main()
                                                      initial_velocity -= 5;
                                                  });
             initial_velocity_subtract_btn.Draw(mouse_pos, mouse_pressed);
+
+            
+            if (play && !landed)
+            {
+                float current_time = GetFrameTime();
+                elapsed_time += current_time;
+                newXPos = CalculateXPos(CalculteXInitialVelocity(angle, initial_velocity), elapsed_time);
+                newYPos = CalculateYPos(CalculteYInitialVelocity(angle, initial_velocity), elapsed_time, gravity_acceleration);
+
+                // std::cout<< newYPos;
+                // calculate displacement for x,y -- convert to px to draw
+                particle_x = initial_xPos + MetreToPixel(newXPos);
+                particle_y = initial_yPos - MetreToPixel(newYPos);
+
+                // velocity at a time 
+                float v;
+                // v = u + at
+                v = (CalculteYInitialVelocity(angle, initial_velocity)) + (-gravity_acceleration)*elapsed_time;
+
+                // if the particle hits the ground and also the speed is negative(decreasing)
+                // so the bool landed is not at the starting
+                if (((particle_y + 10) >= initial_yPos)&&(v<0))
+                {
+                    std::cout << "LANDED!!!!" << std::endl;
+                    particle_y = initial_yPos - 10;
+                    landed = true;
+                }
+
+            }
+            else if(play && landed)
+            {
+                DrawRectangle(300,250,600,250,LIGHTGRAY);
+                DrawText(TextFormat(
+                         "Total Time Taken: %.2fs\n\n"
+                         "Total Displacement(x): %.2fpx", elapsed_time, (particle_x-initial_xPos)),
+                     350, 300, 25, BLACK);
+                
+                char arr[] = "FINISH!!!!";
+                DrawText(arr, (screen_width/2)-120, screen_height/2, 70, BLACK);
+            }
+            else if (!play)
+            {
+                landed = false;
+                elapsed_time = 0;
+                particle_x = initial_xPos;
+                particle_y = initial_yPos;
+            }
+
+            DrawCircle(particle_x, particle_y, 10, BLACK);
+
 
         }
         EndDrawing();
