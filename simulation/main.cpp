@@ -4,6 +4,7 @@
 #include <string>
 #include <math.h>
 #include <functional>
+#include <vector>
 
 // //functions
 // PROJECTILE X AND Y COORDINATE CALCULATIONS
@@ -67,9 +68,13 @@ int main()
     bool play = false;
     bool landed = false;
     bool start = false;
+    bool reset = false;
 
     float elapsed_time = 0;
     Texture2D mainScreen = LoadTexture("images/title_screen_2D.jpg");
+
+    std::vector<float> x_trailVector;
+    std::vector<float> y_trailVector;
 
     while (!WindowShouldClose())
     {
@@ -79,11 +84,11 @@ int main()
         // main title screen and start button
         BeginDrawing();
         ClearBackground(WHITE);
-        
+
         if (start == false)
         {
-            DrawTexture(mainScreen, 0,0, WHITE);
-            Button start_btn((screen_width/2)-60, (screen_height/2)+35, 170, 80, RED, PINK, RED, "START", WHITE, 35,
+            DrawTexture(mainScreen, 0, 0, WHITE);
+            Button start_btn((screen_width / 2) - 60, (screen_height / 2) + 35, 170, 80, RED, PINK, RED, "START", WHITE, 35,
                              [&start]()
                              {
                                  start = true;
@@ -136,11 +141,26 @@ int main()
 
             if (play == false)
             {
+                // reset == false;
                 play_btn.Draw(mouse_pos, mouse_pressed);
             }
             else
             {
                 stop_btn.Draw(mouse_pos, mouse_pressed);
+            }
+
+            Button reset_btn(1000, (screen_height - screen_height * 1 / 4 + 90), 170, 50, LIGHTGRAY, WHITE, LIGHTGRAY, "RESET SCREEN", BLACK, 20, [&reset](){
+             
+                reset = true;
+            });
+            
+            reset_btn.Draw(mouse_pos, mouse_pressed);
+
+            if(reset == true){
+
+                x_trailVector.clear();
+                y_trailVector.clear();
+                reset = false;
             }
 
             // Adding and subtracting
@@ -178,7 +198,6 @@ int main()
                                                  });
             initial_velocity_subtract_btn.Draw(mouse_pos, mouse_pressed);
 
-            
             if (play && !landed)
             {
                 float current_time = GetFrameTime();
@@ -191,34 +210,51 @@ int main()
                 particle_x = initial_xPos + MetreToPixel(newXPos);
                 particle_y = initial_yPos - MetreToPixel(newYPos);
 
-                // velocity at a time 
+                // velocity at a time
                 float v;
                 // v = u + at
-                v = (CalculteYInitialVelocity(angle, initial_velocity)) + (-gravity_acceleration)*elapsed_time;
+                v = (CalculteYInitialVelocity(angle, initial_velocity)) + (-gravity_acceleration) * elapsed_time;
 
                 // if the particle hits the ground and also the speed is negative(decreasing)
                 // so the bool landed is not at the starting
-                if (((particle_y + 10) >= initial_yPos)&&(v<0))
+                if (((particle_y + 10) >= initial_yPos) && (v < 0))
                 {
                     std::cout << "LANDED!!!!" << std::endl;
                     particle_y = initial_yPos - 10;
                     landed = true;
                 }
 
+                // draw a dot to keep a trail of the circle's trajectory
+                // every 10 px
+                // use a vector to push coordinates and keep drawing every single trail
+
+                x_trailVector.push_back(particle_x);
+                y_trailVector.push_back(particle_y);
+
+                for (int i = 0; i < x_trailVector.size(); i++)
+                {
+                    if (i % 5 == 0)
+                    {
+                        DrawCircle(x_trailVector[i], y_trailVector[i], 3, RED);
+                    }
+                }
             }
-            else if(play && landed)
+            else if (play && landed)
             {
-                DrawRectangle(300,250,600,250,LIGHTGRAY);
+                DrawRectangle(300, 250, 600, 250, LIGHTGRAY);
                 DrawText(TextFormat(
-                         "Total Time Taken: %.2fs\n\n"
-                         "Total Displacement(x): %.2fpx", elapsed_time, (particle_x-initial_xPos)),
-                     350, 300, 25, BLACK);
-                
+                             "Total Time Taken: %.2fs\n\n"
+                             "Total Displacement(x): %.2fpx",
+                             elapsed_time, (particle_x - initial_xPos)),
+                         350, 300, 25, BLACK);
+
                 char arr[] = "FINISH!!!!";
-                DrawText(arr, (screen_width/2)-120, screen_height/2, 70, BLACK);
+                DrawText(arr, (screen_width / 2) - 120, screen_height / 2, 70, BLACK);
             }
             else if (!play)
             {
+                // x_trailVector.clear();
+                // y_trailVector.clear();
                 landed = false;
                 elapsed_time = 0;
                 particle_x = initial_xPos;
@@ -226,8 +262,6 @@ int main()
             }
 
             DrawCircle(particle_x, particle_y, 10, BLACK);
-
-
         }
         EndDrawing();
     }
